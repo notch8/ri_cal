@@ -180,6 +180,7 @@ module RiCal
         candidates = period_array.map {|period|
           period.last_before_utc(time)
         }
+        candidates.delete(nil)
         result = candidates.max {|a, b| a.dtstart_property <=> b.dtstart_property}
         result
       end
@@ -188,6 +189,7 @@ module RiCal
         candidates = period_array.map {|period|
           period.last_before_local(time)
         }
+        candidates.delete(nil)
         result = candidates.max {|a, b| a.dtstart_property <=> b.dtstart_property}
         result
       end
